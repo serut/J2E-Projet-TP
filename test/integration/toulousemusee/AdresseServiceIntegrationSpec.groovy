@@ -13,7 +13,7 @@ class AdresseServiceIntegrationSpec extends IntegrationSpec {
     void "test ajout d'une adresse"() {
         given: "une adresse"
         def uneAdresse = new Adresse(
-                todo
+                // TODO
         )
         when: "on insert ou met à jour l'adresse"
         def resAjoutAdresse = adresseService.insertOrUpdateAdresse(uneAdresse)
