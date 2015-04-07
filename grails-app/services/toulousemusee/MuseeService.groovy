@@ -11,24 +11,23 @@ class MuseeService {
     def deleteMusee(Musee musee) {
         musee.delete(flush : true)
     }
-    def public searchMusee(String inNameMusee, String codePostal, String inAdresseMusee) {
-            def criteria = Musee.createCriteria()
-            List<Musee> result = criteria.list {
-                if (inNameMusee) {
-                    like("name", "%${inNameMusee}%")
-                }
-                if (codePostal) {
-                    adress {
-                        eq("codePostal", "${codePostal}")
-                    }
-                }
-                if (inAdresseMusee) {
-                    adress {
-                        like("rue", "%${inAdresseMusee}%")
-                    }
+    def public searchMusee(String inNomMusee, String codePostal, String inAdresseMusee) {
+        def criteria = Musee.createCriteria()
+        List<Musee> result = criteria.list {
+            if (inNameMusee) {
+                like("nom", "%${inNomMusee}%")
+            }
+            if (codePostal) {
+                adresse {
+                    eq("codePostal", "${codePostal}")
                 }
             }
-            result
+            if (inAdresseMusee) {
+                adresse {
+                    like("rue", "%${inAdresseMusee}%")
+                }
+            }
         }
+        result
     }
 }
