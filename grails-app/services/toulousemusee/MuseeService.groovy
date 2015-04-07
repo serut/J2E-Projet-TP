@@ -4,17 +4,26 @@ import grails.transaction.Transactional
 
 @Transactional
 class MuseeService {
-    public Musee insertOrUpdateMusee(Musee musee) {
+    public Musee insertOrUpdateMusee(Musee musee, Gestionnaire gestionnaire, Adresse adresse) {
+        gestionnaire.addToMusees(musee)
+        adresse.musee = musee
+
+        gestionnaire.save(flush: true)
+        adresse.save(flush: true)
         musee.save(flush: true)
         musee
     }
+
     def deleteMusee(Musee musee) {
+        musee.gestionnaire.removeFromMusees(musee)
+        musee.adresse.delete(flush : true)
         musee.delete(flush : true)
     }
+
     def public searchMusee(String inNomMusee, String codePostal, String inAdresseMusee) {
         def criteria = Musee.createCriteria()
         List<Musee> result = criteria.list {
-            if (inNameMusee) {
+            if (inNomMusee) {
                 like("nom", "%${inNomMusee}%")
             }
             if (codePostal) {
@@ -60,7 +69,7 @@ class MuseeService {
             musee.adresse = adresse
             musee.gestionnaire = gestionnaire
 
-            insertOrUpdateMusee(musee)
+            insertOrUpdateMusee(musee, gestionnaire, adresse)
         }
     }
 }
