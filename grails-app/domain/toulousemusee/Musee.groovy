@@ -6,6 +6,7 @@ class Musee {
     String telephone
     String accesMetro
     String accesBus
+    Adresse adresse
 
     static constraints = {
         name nullable: false, blank: false
@@ -13,5 +14,6 @@ class Musee {
         telephone nullable: false, blank: false
         accesMetro nullable: false, blank: false
         accesBus nullable: false, blank: false
+        adresse nullable: false
     }
 }
