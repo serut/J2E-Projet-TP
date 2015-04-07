@@ -30,4 +30,37 @@ class MuseeService {
         }
         result
     }
+
+    def importMuseeFromCsv(String csvPath) {
+        File csvFile = new File(csvPath)
+
+        // Lecture du fichier CSV en ignorant la première ligne (titres des colonnes)
+        csvFile.toCsvReader(['skipLines':1, 'charset':'UTF-8']).eachLine { tokens ->
+            // Attributs pour le musée
+            def nomMusee = tokens[0].trim()
+            def horairesMusee = tokens[2].trim()
+            def telephoneMusee = tokens[4].trim()
+            def accesMetroMusee = tokens[5].trim()
+            def accesBusMusee = tokens[6].trim()
+
+            // Attributs pour le gestionnaire
+            def nomGestionnaire = tokens[1].trim()
+
+            // Attributs pour l'adresse
+            def numAdresse = tokens[7].trim()
+            def rueAdresse = tokens[8].trim()
+            def codePostalAdresse = tokens[9].trim()
+            def villeAdresse = tokens[10].trim()
+
+
+            // Création des objets
+            Gestionnaire gestionnaire = Gestionnaire.findByNom(nomGestionnaire) ?: new Gestionnaire(nom: nomGestionnaire)
+            Adresse adresse = new Adresse(numero: numAdresse, rue: rueAdresse, codePostal: codePostalAdresse, ville: villeAdresse)
+            Musee musee = new Musee(nom: nomMusee, horairesOuverture: horairesMusee, telephone: telephoneMusee, accesMetro: accesMetroMusee, accesBus: accesBusMusee)
+            musee.adresse = adresse
+            musee.gestionnaire = gestionnaire
+
+            insertOrUpdateMusee(musee)
+        }
+    }
 }
