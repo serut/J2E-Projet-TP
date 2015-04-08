@@ -11,4 +11,15 @@ class AdresseService {
     def deleteAdresse(Adresse adresse) {
         adresse.delete(flush : true)
     }
+    public List<String> getCodePostal() {
+        def criteria = Adresse.createCriteria()
+        List<Adresse> query = criteria.list {
+            distinct("codePostal")
+        }
+        List<String> result = new ArrayList<String>();
+        query.each {
+            result.add(it.codePostal)
+        }
+        result
+    }
 }

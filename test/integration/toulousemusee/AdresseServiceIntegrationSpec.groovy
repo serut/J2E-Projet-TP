@@ -30,6 +30,10 @@ class AdresseServiceIntegrationSpec extends IntegrationSpec {
         and: "elle est valide"
         uneAdresse.validate()
 
+        and: "il n'y a qu'un seul code postal différent"
+        adresseService.getCodePostal().size == 1
+        adresseService.getCodePostal() == ["31400"]
+
         and: "elle est bien stockée en base"
         Adresse.findById(uneAdresse.id) != null
     }
