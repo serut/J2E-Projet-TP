@@ -7,20 +7,16 @@ class MuseeService {
     def gestionnaireService
     def adresseService
 
-    public Musee insertOrUpdateMusee(Musee musee, Gestionnaire gestionnaire, Adresse adresse) {
-        gestionnaireService.insertOrUpdateGestionnaire(gestionnaire, musee)
-        adresseService.insertOrUpdateAdresse(adresse)
-
-        musee.gestionnaire = gestionnaire
-        musee.adresse = adresse
-
+    public Musee insertOrUpdateMusee(Musee musee) {
+        gestionnaireService.insertOrUpdateGestionnaire(musee.gestionnaire)
+        adresseService.insertOrUpdateAdresse(musee.adresse)
+        musee.gestionnaire.addToMusees(musee)
         musee.save(flush: true)
         musee
     }
 
     def deleteMusee(Musee musee) {
         musee.gestionnaire.removeFromMusees(musee)
-        musee.adresse.delete(flush : true)
         musee.delete(flush : true)
     }
 

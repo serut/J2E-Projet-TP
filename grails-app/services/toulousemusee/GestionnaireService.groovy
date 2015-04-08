@@ -4,9 +4,7 @@ import grails.transaction.Transactional
 
 @Transactional
 class GestionnaireService {
-
-    public Gestionnaire insertOrUpdateGestionnaire(Gestionnaire gestionnaire, Musee musee) {
-        gestionnaire.addToMusees(musee)
+    public Gestionnaire insertOrUpdateGestionnaire(Gestionnaire gestionnaire) {
         gestionnaire.save(flush: true)
         gestionnaire
     }
