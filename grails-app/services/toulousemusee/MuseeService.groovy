@@ -4,12 +4,13 @@ import grails.transaction.Transactional
 
 @Transactional
 class MuseeService {
-    public Musee insertOrUpdateMusee(Musee musee, Gestionnaire gestionnaire, Adresse adresse) {
-        gestionnaire.addToMusees(musee)
-        adresse.musee = musee
+    def gestionnaireService
+    def adresseService
 
-        gestionnaire.save(flush: true)
-        adresse.save(flush: true)
+    public Musee insertOrUpdateMusee(Musee musee, Gestionnaire gestionnaire, Adresse adresse) {
+        gestionnaireService.insertOrUpdateGestionnaire(gestionnaire, musee)
+        adresseService.insertOrUpdateAdresse(adresse)
+
         musee.save(flush: true)
         musee
     }
