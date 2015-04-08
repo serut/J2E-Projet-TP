@@ -9,10 +9,6 @@ class Musee {
     Adresse adresse
     Gestionnaire gestionnaire
 
-    static mapping = {
-        adresse cascade: 'all-delete-orphan'
-    }
-
     static constraints = {
         nom nullable: false, blank: false
         horairesOuverture nullable: false, blank: false
