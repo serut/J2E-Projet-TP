@@ -10,6 +10,7 @@ class MuseeService {
     public Musee insertOrUpdateMusee(Musee musee) {
         gestionnaireService.insertOrUpdateGestionnaire(musee.gestionnaire)
         adresseService.insertOrUpdateAdresse(musee.adresse)
+
         musee.gestionnaire.addToMusees(musee)
         musee.save(flush: true)
         musee
@@ -17,7 +18,7 @@ class MuseeService {
 
     def deleteMusee(Musee musee) {
         musee.gestionnaire.removeFromMusees(musee)
-        musee.delete(flush : true)
+        musee.delete(flush: true)
     }
 
     def public searchMusee(String inNomMusee, String codePostal, String inAdresseMusee) {
@@ -42,8 +43,7 @@ class MuseeService {
 
     def importMuseeFromCsv(String csvPath) {
         File csvFile = new File(csvPath)
-
-        print(csvFile.getAbsolutePath())
+"".trim()
         // Lecture du fichier CSV en ignorant la première ligne (titres des colonnes)
         csvFile.toCsvReader(['skipLines':1, 'charset':'UTF-8', separatorChar:';']).eachLine { tokens ->
             //print(tokens)
@@ -51,8 +51,8 @@ class MuseeService {
             def nomMusee = tokens[0].trim()
             def horairesMusee = tokens[2].trim()
             def telephoneMusee = tokens[4].trim()
-            def accesMetroMusee = tokens[5].trim()
-            def accesBusMusee = tokens[6].trim()
+            def accesMetroMusee = tokens[5].trim() ?: "-"
+            def accesBusMusee = tokens[6].trim() ?: "-"
 
             // Attributs pour le gestionnaire
             def nomGestionnaire = tokens[1].trim()
@@ -71,8 +71,6 @@ class MuseeService {
 
             musee.gestionnaire = gestionnaire
             musee.adresse = adresse
-
-            print(musee.toString())
 
             insertOrUpdateMusee(musee)
         }

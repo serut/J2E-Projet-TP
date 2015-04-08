@@ -10,6 +10,6 @@ class GestionnaireService {
     }
 
     def deleteGestionnaire(Gestionnaire gestionnaire) {
-        gestionnaire.delete(flush : true)
+        gestionnaire.delete(flush: true)
     }
 }

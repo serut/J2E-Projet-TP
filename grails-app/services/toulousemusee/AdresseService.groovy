@@ -9,7 +9,7 @@ class AdresseService {
         adresse
     }
     def deleteAdresse(Adresse adresse) {
-        adresse.delete(flush : true)
+        adresse.delete(flush: true)
     }
     public List<String> getCodePostal() {
         def criteria = Adresse.createCriteria()
