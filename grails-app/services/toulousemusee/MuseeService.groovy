@@ -13,7 +13,7 @@ class MuseeService {
 
         musee.gestionnaire = gestionnaire
         musee.adresse = adresse
-        
+
         musee.save(flush: true)
         musee
     }
@@ -70,8 +70,6 @@ class MuseeService {
             Gestionnaire gestionnaire = Gestionnaire.findByNom(nomGestionnaire) ?: new Gestionnaire(nom: nomGestionnaire)
             Adresse adresse = new Adresse(numero: numAdresse, rue: rueAdresse, codePostal: codePostalAdresse, ville: villeAdresse)
             Musee musee = new Musee(nom: nomMusee, horairesOuverture: horairesMusee, telephone: telephoneMusee, accesMetro: accesMetroMusee, accesBus: accesBusMusee)
-            musee.adresse = adresse
-            musee.gestionnaire = gestionnaire
 
             insertOrUpdateMusee(musee, gestionnaire, adresse)
         }
