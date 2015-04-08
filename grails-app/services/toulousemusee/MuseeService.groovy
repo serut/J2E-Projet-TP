@@ -71,6 +71,9 @@ class MuseeService {
             Adresse adresse = new Adresse(numero: numAdresse, rue: rueAdresse, codePostal: codePostalAdresse, ville: villeAdresse)
             Musee musee = new Musee(nom: nomMusee, horairesOuverture: horairesMusee, telephone: telephoneMusee, accesMetro: accesMetroMusee, accesBus: accesBusMusee)
 
+            musee.gestionnaire = gestionnaire
+            musee.adresse = adresse
+            
             insertOrUpdateMusee(musee, gestionnaire, adresse)
         }
     }
