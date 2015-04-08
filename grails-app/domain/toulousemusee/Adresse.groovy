@@ -12,4 +12,16 @@ class Adresse {
         codePostal nullable: false, blank: false
         ville nullable: false, blank: false
     }
+
+
+    @Override
+    public String toString() {
+        return "Adresse{" +
+                "id=" + id +
+                ", numero='" + numero + '\'' +
+                ", rue='" + rue + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", ville='" + ville + '\'' +
+                '}';
+    }
 }

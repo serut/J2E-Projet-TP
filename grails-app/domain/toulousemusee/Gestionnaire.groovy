@@ -12,4 +12,13 @@ class Gestionnaire {
     static constraints = {
         nom nullable: false, blank: false
     }
+
+
+    @Override
+    public String toString() {
+        return "Gestionnaire{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }

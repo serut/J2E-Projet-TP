@@ -17,9 +17,24 @@ class Musee {
         nom nullable: false, blank: false
         horairesOuverture nullable: false, blank: false
         telephone nullable: false, blank: false
-        accesMetro nullable: false, blank: false
-        accesBus nullable: false, blank: false
+        accesMetro nullable: false, blank: true
+        accesBus nullable: false, blank: true
         adresse nullable: false
         gestionnaire nullable: false
+    }
+
+
+    @Override
+    public String toString() {
+        return "Musee{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", horairesOuverture='" + horairesOuverture + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", accesMetro='" + accesMetro + '\'' +
+                ", accesBus='" + accesBus + '\'' +
+                ", gestionnaire=" + gestionnaire +
+                ", adresse=" + adresse +
+                '}';
     }
 }
