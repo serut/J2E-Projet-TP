@@ -11,6 +11,9 @@ class MuseeService {
         gestionnaireService.insertOrUpdateGestionnaire(gestionnaire, musee)
         adresseService.insertOrUpdateAdresse(adresse)
 
+        musee.gestionnaire = gestionnaire
+        musee.adresse = adresse
+        
         musee.save(flush: true)
         musee
     }
