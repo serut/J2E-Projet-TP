@@ -13,7 +13,10 @@ class AdresseServiceIntegrationSpec extends IntegrationSpec {
     void "test ajout d'une adresse"() {
         given: "une adresse"
         def uneAdresse = new Adresse(
-                // TODO
+                numero : "01",
+                rue : "Route de Narbonne",
+                codePostal : "31400",
+                ville : "Toulouse"
         )
         when: "on insert ou met à jour l'adresse"
         def resAjoutAdresse = adresseService.insertOrUpdateAdresse(uneAdresse)
@@ -34,12 +37,15 @@ class AdresseServiceIntegrationSpec extends IntegrationSpec {
     void "test de la suppression d'une adresse"() {
         given:"une adresse existe en base"
         def uneAdresse = new Adresse(
-                todo
+                numero : "01",
+                rue : "Route de Narbonne",
+                codePostal : "31400",
+                ville : "Toulouse"
         )
-        adresseService.insertOrUpdateMusee(uneAdresse)
+        adresseService.insertOrUpdateAdresse(uneAdresse)
 
         when:"on déclenche la suppression d'une adresse"
-        adresseService.deleteGestionnaire(uneAdresse)
+        adresseService.deleteAdresse(uneAdresse)
 
         then:"l'adresse est supprimée de la base"
         Adresse.findById(uneAdresse.id) == null
