@@ -43,8 +43,10 @@ class MuseeService {
     def importMuseeFromCsv(String csvPath) {
         File csvFile = new File(csvPath)
 
+        print(csvFile.getAbsolutePath())
         // Lecture du fichier CSV en ignorant la première ligne (titres des colonnes)
-        csvFile.toCsvReader(['skipLines':1, 'charset':'UTF-8']).eachLine { tokens ->
+        csvFile.toCsvReader(['skipLines':1, 'charset':'UTF-8', separatorChar:';']).eachLine { tokens ->
+            //print(tokens)
             // Attributs pour le musée
             def nomMusee = tokens[0].trim()
             def horairesMusee = tokens[2].trim()
@@ -69,8 +71,10 @@ class MuseeService {
 
             musee.gestionnaire = gestionnaire
             musee.adresse = adresse
-            
-            insertOrUpdateMusee(musee, gestionnaire, adresse)
+
+            print(musee.toString())
+
+            insertOrUpdateMusee(musee)
         }
     }
 }
