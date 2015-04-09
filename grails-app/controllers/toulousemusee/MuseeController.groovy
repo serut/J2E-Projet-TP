@@ -15,9 +15,24 @@ class MuseeController {
     def index(Integer max) {
         params.max = Math.min(max ?: 5, 100)
 
-        def listeMusee = museeService.searchMusee(params.inNomMusee, params.codePostal, params.inAdresseMusee);
+        def listeMusee = museeService.searchMusee(params.inNomMusee, params.codePostal, params.inAdresseMusee)
 
         respond listeMusee.drop(params.int('offset')?:0).take(params.int('max')), model:[museeInstanceCount: listeMusee.size()]
+    }
+
+    def addMuseeFav(Integer idMusee) {
+        session.museesFav = session.museesFav ?: new ArrayList<Integer>()
+        session.museesFav.add(idMusee)
+
+        redirect(controller:'musee',action:'index', params: params)
+    }
+
+    def removeMuseeFav(Integer idMusee) {
+        if (session.museesFav) {
+            session.museesFav.remove(idMusee)
+        }
+
+        redirect(controller:'musee',action:'index', params: params)
     }
 
     def show(Musee museeInstance) {
