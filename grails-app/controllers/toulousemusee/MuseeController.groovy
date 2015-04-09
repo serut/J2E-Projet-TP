@@ -20,16 +20,16 @@ class MuseeController {
         respond listeMusee.drop(params.int('offset')?:0).take(params.int('max')), model:[params:params, museeInstanceCount: listeMusee.size()]
     }
 
-    def addMuseeFav(Integer idMusee) {
+    def addMuseeFav() {
         session.museesFav = session.museesFav ?: new ArrayList<Integer>()
-        session.museesFav.add(idMusee)
+        session.museesFav.add(params.idMuseeFav)
 
         redirect(controller:'musee',action:'index', params: params)
     }
 
-    def removeMuseeFav(Integer idMusee) {
+    def removeMuseeFav() {
         if (session.museesFav) {
-            session.museesFav.remove(idMusee)
+            session.museesFav.remove(params.idMuseeFav)
         }
 
         redirect(controller:'musee',action:'index', params: params)
