@@ -112,8 +112,8 @@ class MuseeServiceIntegrationSpec extends IntegrationSpec {
         when:"on cherche les musées situés dans le code postal '31500' "
         res = museeService.searchMusee(null,"31500",null)
 
-        then:"on récupère uniquement 1 musée"
-        res.size() == 1
+        then:"on récupère uniquement 2 musées"
+        res.size() == 2
 
 
         when:"on cherche les musées situés dans à l'adresse contenant 'Ponsan' "

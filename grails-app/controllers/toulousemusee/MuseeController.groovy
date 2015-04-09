@@ -10,9 +10,14 @@ class MuseeController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def museeService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 5, 100)
-        respond Musee.list(params), model:[museeInstanceCount: Musee.count()]
+
+        def listeMusee = museeService.searchMusee(params.inNomMusee, params.codePostal, params.inAdresseMusee);
+
+        respond listeMusee.drop(params.int('offset')?:0).take(params.int('max')), model:[museeInstanceCount: listeMusee.size()]
     }
 
     def show(Musee museeInstance) {
