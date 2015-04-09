@@ -25,19 +25,19 @@ class MuseeController {
         session.museesFav = session.museesFav ?: new HashMap<Integer, String>()
         session.museesFav.put(id, Musee.findById(id).nom)
 
-        params.remove(idMuseeFav)
+        params.remove("idMuseeFav")
 
         redirect(controller:'musee',action:'index', params: params)
     }
 
     def removeMuseeFav() {
         Integer id = Integer.parseInt(params.idMuseeFav)
-        
+
         if (session.museesFav) {
             session.museesFav.remove(id)
         }
 
-        params.remove(idMuseeFav)
+        params.remove("idMuseeFav")
 
         redirect(controller:'musee',action:'index', params: params)
     }
