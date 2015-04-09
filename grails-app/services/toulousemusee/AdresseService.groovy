@@ -11,6 +11,8 @@ class AdresseService {
     def deleteAdresse(Adresse adresse) {
         adresse.delete(flush: true)
     }
+
+    // Todo : le distinct n'est pas fonctionnel, d'ou le test result.has() avant insertion
     public List<String> getCodePostal() {
         def criteria = Adresse.createCriteria()
         List<Adresse> query = criteria.list {
@@ -18,7 +20,8 @@ class AdresseService {
         }
         List<String> result = new ArrayList<String>();
         query.each {
-            result.add(it.codePostal)
+            if (! result.contains(it.codePostal))
+                result.add(it.codePostal)
         }
         result
     }
