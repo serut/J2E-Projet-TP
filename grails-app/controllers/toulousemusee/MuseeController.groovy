@@ -32,12 +32,12 @@ class MuseeController {
 
     def removeMuseeFav() {
         Integer id = Integer.parseInt(params.idMuseeFav)
-        
+
         if (session.museesFav) {
             session.museesFav.remove(id)
         }
 
-        params.remove(idMuseeFav)
+        params.remove("idMuseeFav")
 
         redirect(controller:'musee',action:'index', params: params)
     }
