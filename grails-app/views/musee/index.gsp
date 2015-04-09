@@ -61,10 +61,18 @@
                         <ul class="nav nav-pills nav-stacked">
                             <g:each in="${session.museesFav}" status="i" var="museeFavoris">
                                 <li role="presentation">
-                                    ${museeFavoris} - ${i}
-                                    <button type="button" class="btn btn-primary" >
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                    ${museeFavoris.value}
+                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
+                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                        <input type="hidden" name="offset" value="${params.offset}">
+                                        <input type="hidden" name="max" value="${params.max}">
+                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                        <button type="submit" class="btn btn-primary" >
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </g:form>
                                 </li>
                             </g:each>
                         </ul>
@@ -122,7 +130,11 @@
                                     </g:if>
                                     <g:else>
                                         <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'addMuseeFav']">
-                                            <input type="hidden" name="params" value="${params}">
+                                            <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                            <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                            <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                            <input type="hidden" name="offset" value="${params.offset}">
+                                            <input type="hidden" name="max" value="${params.max}">
                                             <input type="hidden" name="idMuseeFav" value="${museeInstance.id}">
                                             <button type="submit" class="btn btn-primary" >
                                                 <span class="glyphicon-plus"></span>
