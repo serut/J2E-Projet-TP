@@ -59,7 +59,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${museeInstanceCount ?: 0}" />
+				<g:paginate params="${params}" total="${museeInstanceCount ?: 0}" />
 			</div>
 		</div>
 	</body>

@@ -17,7 +17,7 @@ class MuseeController {
 
         def listeMusee = museeService.searchMusee(params.inNomMusee, params.codePostal, params.inAdresseMusee);
 
-        respond listeMusee.drop(params.int('offset')?:0).take(params.int('max')), model:[museeInstanceCount: listeMusee.size()]
+        respond listeMusee.drop(params.int('offset')?:0).take(params.int('max')), model:[params:params, museeInstanceCount: listeMusee.size()]
     }
 
     def show(Musee museeInstance) {
