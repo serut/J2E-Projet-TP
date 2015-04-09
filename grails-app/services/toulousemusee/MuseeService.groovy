@@ -43,7 +43,7 @@ class MuseeService {
 
     def importMuseeFromCsv(String csvPath) {
         File csvFile = new File(csvPath)
-"".trim()
+
         // Lecture du fichier CSV en ignorant la première ligne (titres des colonnes)
         csvFile.toCsvReader(['skipLines':1, 'charset':'UTF-8', separatorChar:';']).eachLine { tokens ->
             //print(tokens)
