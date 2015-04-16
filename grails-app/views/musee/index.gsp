@@ -53,19 +53,28 @@
             </div>
 
         </div>
-
         <div class="content">
             <div class="row">
                 <aside class="col-sm-2 col-sm-offset-1">
                     <div>
                         <h3 class="masthead-brand">Votre liste de musée favorite</h3>
                         <ul class="nav nav-pills nav-stacked">
-                            <li role="presentation"><span>
-                                Le nom du musee
-                                <button type="button" class="btn btn-primary" >
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </li>
+                            <g:each in="${session.museesFav}" status="i" var="museeFavoris">
+                                <li role="presentation">
+                                    ${museeFavoris.value}
+                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
+                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                        <input type="hidden" name="offset" value="${params.offset}">
+                                        <input type="hidden" name="max" value="${params.max}">
+                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                        <button type="submit" class="btn btn-primary" >
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </g:form>
+                                </li>
+                            </g:each>
                         </ul>
                     </div>
                 </aside>
@@ -114,14 +123,19 @@
                                 <td>${fieldValue(bean: museeInstance, field: "adresse")}</td>
 
                                 <td>
-
-                                    <g:if test="${session.museeFav?.contains(museeInstance.id)}">
-                                        <h1>Hi, ${username}</h1>
+                                    <g:if test="${session.museesFav?.containsKey((int)museeInstance.id)}">
+                                        <button type="submit" class="btn btn-primary" disabled>
+                                            <span class="glyphicon-plus"></span>
+                                        </button>
                                     </g:if>
                                     <g:else>
                                         <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'addMuseeFav']">
-                                            <input type="hidden" name="params" value="${params}">
-                                            <input type="hidden" name="idMusee" value="${museeInstance.id}">
+                                            <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                            <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                            <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                            <input type="hidden" name="offset" value="${params.offset}">
+                                            <input type="hidden" name="max" value="${params.max}">
+                                            <input type="hidden" name="idMuseeFav" value="${museeInstance.id}">
                                             <button type="submit" class="btn btn-primary" >
                                                 <span class="glyphicon-plus"></span>
                                             </button>
