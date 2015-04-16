@@ -46,7 +46,8 @@
                     <h3 class="masthead-brand">Projet TP J2E</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                            <li><a class="home" href="${createLink(uri: '/')}">Accueil</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -147,6 +148,12 @@
                                     </g:form>
                                 </li>
                             </g:each>
+                            <g:if test="${museesFavSorted.size() > 0}">
+                                <br>
+                            <a href="${createLink(uri: '/demandeVisite/')}">
+                                <button type="submit" class="btn btn-warning">Faire une demande de visite</button>
+                            </a>
+                            </g:if>
                         </ul>
                     </div>
                 </aside>
