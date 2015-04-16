@@ -51,8 +51,8 @@ class MuseeService {
             def nomMusee = tokens[0].trim()
             def horairesMusee = tokens[2].trim()
             def telephoneMusee = tokens[4].trim()
-            def accesMetroMusee = tokens[5].trim() ?: "-"
-            def accesBusMusee = tokens[6].trim() ?: "-"
+            def accesMetroMusee = tokens[5].trim() ?: ""
+            def accesBusMusee = tokens[6].trim() ?: ""
 
             // Attributs pour le gestionnaire
             def nomGestionnaire = tokens[1].trim()
