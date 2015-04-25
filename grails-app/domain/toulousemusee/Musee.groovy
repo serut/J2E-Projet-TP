@@ -15,7 +15,7 @@ class Musee {
         telephone nullable: false, blank: false
         accesMetro nullable: false, blank: true
         accesBus nullable: false, blank: true
-        adresse nullable: false
+        adresse nullable: false, unique:true
         gestionnaire nullable: false
     }
 
