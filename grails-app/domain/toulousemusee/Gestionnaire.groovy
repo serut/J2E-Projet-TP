@@ -16,9 +16,6 @@ class Gestionnaire {
 
     @Override
     public String toString() {
-        return "Gestionnaire{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                '}';
+        return nom;
     }
 }

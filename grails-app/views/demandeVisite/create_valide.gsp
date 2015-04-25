@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Leo
-  Date: 08/04/15
-  Time: 15:23
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +13,14 @@
     <title>Cover Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./css/cover.css" rel="stylesheet">
+    <link href="./../css/cover.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="./js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="./../js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./../js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,40 +43,19 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <li><a href="${createLink(uri: '/')}">Acceuil</a></li>
-                            <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
 
             <div class="inner cover">
-                <h1 class="cover-heading">Rechercher un musée</h1>
-                <span>A partir d'un des critères de recherche suivants :</span>
+                <h1 class="cover-heading">Demande de visite de musée</h1>
+                <span>Message indiquant que la demande sera traitée prochainement</span>
             </div>
             <div class="">
-                <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'index']">
-
-                    <div class="row text-left">
-                        <div class="form-group col-sm-4">
-                            <label>Nom</label>
-                            <input type="text" name="inNomMusee" class="form-control" placeholder="Archives municipales...">
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <label for="exampleInputPassword1">Code postal</label>
-                            <select class="form-control" name="codePostal">
-                                <option value="" default></option>
-                                <g:each in="${listeCodePostal}" var="codePostal">
-                                    <option value="${codePostal}">${codePostal}</option>
-                                </g:each>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <label>Adresse</label>
-                            <input type="text" name="inAdresseMusee" class="form-control" placeholder="Rue du may...">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-lg btn-default">Rechercher</button>
-                </g:form>
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
             </div>
 
 

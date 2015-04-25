@@ -46,7 +46,8 @@
                     <h3 class="masthead-brand">Projet TP J2E</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                            <li><a class="home" href="${createLink(uri: '/')}">Accueil</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -55,35 +56,12 @@
         </div>
         <div class="content">
             <div class="row">
-                <aside class="col-sm-2 col-sm-offset-1">
-                    <div>
-                        <h3 class="masthead-brand">Votre liste de musée favorite</h3>
-                        <ul class="nav nav-pills nav-stacked">
-                            <g:each in="${session.museesFav}" status="i" var="museeFavoris">
-                                <li role="presentation">
-                                    ${museeFavoris.value}
-                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
-                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
-                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
-                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
-                                        <input type="hidden" name="offset" value="${params.offset}">
-                                        <input type="hidden" name="max" value="${params.max}">
-                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
-                                        <button type="submit" class="btn btn-primary" >
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </button>
-                                    </g:form>
-                                </li>
-                            </g:each>
-                        </ul>
-                    </div>
-                </aside>
-                <div class="col-sm-8">
+                <div class="col-sm-7 col-sm-offset-1">
                     <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                     <g:if test="${flash.message}">
                         <div class="message" role="status">${flash.message}</div>
                     </g:if>
-                    <table class="table">
+                    <table class="">
                         <thead>
                         <tr>
 
@@ -125,7 +103,7 @@
                                 <td>
                                     <g:if test="${session.museesFav?.containsKey((int)museeInstance.id)}">
                                         <button type="submit" class="btn btn-primary" disabled>
-                                            <span class="glyphicon-plus"></span>
+                                            <span class="glyphicon-plus"></span> ajouter à ma liste de musées fav
                                         </button>
                                     </g:if>
                                     <g:else>
@@ -137,7 +115,7 @@
                                             <input type="hidden" name="max" value="${params.max}">
                                             <input type="hidden" name="idMuseeFav" value="${museeInstance.id}">
                                             <button type="submit" class="btn btn-primary" >
-                                                <span class="glyphicon-plus"></span>
+                                                <span class="glyphicon-plus"></span> ajouter à ma liste de musées fav
                                             </button>
                                         </g:form>
                                     </g:else>
@@ -150,6 +128,35 @@
                         <g:paginate params="${params}" total="${museeInstanceCount ?: 0}" />
                     </div>
                 </div>
+                <aside class="col-sm-2 col-sm-offset-1">
+                    <div>
+                        <h3 class="masthead-brand">Votre liste de musée favorite</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
+                                <li role="presentation">
+                                    ${museeFavoris.value}
+                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
+                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                        <input type="hidden" name="offset" value="${params.offset}">
+                                        <input type="hidden" name="max" value="${params.max}">
+                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                        <button type="submit" class="btn btn-primary" >
+                                            <span class="glyphicon glyphicon-trash"></span> Supprimer
+                                        </button>
+                                    </g:form>
+                                </li>
+                            </g:each>
+                            <g:if test="${museesFavSorted.size() > 0}">
+                                <br>
+                            <a href="${createLink(uri: '/demandeVisite/')}">
+                                <button type="submit" class="btn btn-warning">Faire une demande de visite</button>
+                            </a>
+                            </g:if>
+                        </ul>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
