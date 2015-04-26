@@ -50,7 +50,7 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <li><a href="${createLink(uri: '/')}">Accueil</a></li>
-                            <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Vos demandes de visite</a></li>
                         </ul>
                     </nav>
                 </div>

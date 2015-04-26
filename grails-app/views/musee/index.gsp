@@ -131,6 +131,7 @@
                 </div>
                 <div class="col-sm-2 col-sm-offset-1">
                     <div>
+<<<<<<< HEAD
                         <div class="row">
                             <h3 class="masthead-brand">Musées favoris</h3>
                         </div>
@@ -164,6 +165,33 @@
                                 </a>
                             </div>
                         </g:if>
+=======
+                        <h3 class="masthead-brand">Votre liste de musée favorite</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
+                                <li role="presentation">
+                                    ${museeFavoris.value}
+                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
+                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                        <input type="hidden" name="offset" value="${params.offset}">
+                                        <input type="hidden" name="max" value="${params.max}">
+                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                        <button type="submit" class="btn btn-primary" >
+                                            <span class="glyphicon glyphicon-trash"></span> Supprimer
+                                        </button>
+                                    </g:form>
+                                </li>
+                            </g:each>
+                            <g:if test="${museesFavSorted.size() > 0}">
+                                <br>
+                            <a href="${createLink(uri: '/demandeVisite/create')}">
+                                <button type="submit" class="btn btn-warning">Effectuer une demande de visite</button>
+                            </a>
+                            </g:if>
+                        </ul>
+>>>>>>> e254b06c96c848cca94580c9ab01525cce606f36
                     </div>
                 </div>
             </div>
