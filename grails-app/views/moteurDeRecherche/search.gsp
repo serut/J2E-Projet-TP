@@ -37,7 +37,7 @@
                 <h1 class="cover-heading">Rechercher un musée</h1>
                 <span>A partir d'un des critères de recherche suivants :</span>
             </div>
-            <div class="">
+            <div class="row">
                 <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'index']">
 
                     <div class="row text-left">
@@ -61,6 +61,36 @@
                     </div>
                     <button type="submit" class="btn btn-lg btn-default">Rechercher</button>
                 </g:form>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <h3 class="masthead-brand">Musées favoris</h3>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-pills nav-stacked">
+                        <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
+                            <li role="presentation">
+
+                                <g:form name="formulaireRechercher" method="get" url="[controller:'moteurDeRecherche',action:'removeMuseeFav']">
+                                    <label>${museeFavoris.value}</label>
+                                    <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                    <button type="submit" class="btn btn-primary" >
+                                        <span class="glyphicon glyphicon-trash"></span> Supprimer
+                                    </button>
+                                </g:form>
+                            </li>
+                        </g:each>
+                    </ul>
+                </div>
+                <div class="row">
+                    <g:if test="${museesFavSorted.size() > 0}">
+                        <br>
+                        <a href="${createLink(uri: '/demandeVisite/create')}">
+                            <button type="submit" class="btn btn-warning">Effectuer une demande de visite</button>
+                        </a>
+                    </g:if>
+                </div>
             </div>
         </div>
     </div>

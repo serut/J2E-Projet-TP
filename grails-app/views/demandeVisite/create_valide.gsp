@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cover Template for Bootstrap</title>
+    <title>Demande de visite</title>
     <meta name="layout" content="main"/>
 </head>
 

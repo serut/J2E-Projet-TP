@@ -30,7 +30,7 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <li><a class="home" href="${createLink(uri: '/')}">Accueil</a></li>
-                            <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Vos demandes de visite</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -111,6 +111,7 @@
                         <g:paginate params="${params}" total="${museeInstanceCount ?: 0}" />
                     </div>
                 </div>
+
                 <div class="col-sm-2 col-sm-offset-1">
                     <div class="row">
                         <h3 class="masthead-brand">Musées favoris</h3>

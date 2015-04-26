@@ -4,38 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cover Template for Bootstrap</title>
+    <title>Demande de visite</title>
     <meta name="layout" content="main"/>
-    <style>
-    .form-control, #dateDeb_day, #dateDeb_month, #dateDeb_year, #dateFin_day, #dateFin_month, #dateFin_year {
-        display: block;
-        width: 100%;
-        height: 34px;
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #555;
-        background-color: #fff;
-        background-image: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    }
-    </style>
 </head>
 
 <body>
-
 <div class="site-wrapper">
-
     <div class="site-wrapper-inner">
-
         <div class="cover-container">
-
             <div class="masthead clearfix">
                 <div class="inner">
                     <h3 class="masthead-brand">Projet TP J2E</h3>
@@ -51,7 +27,6 @@
             <div class="inner cover">
                 <h1 class="cover-heading">Vos demandes de visite de musée</h1>
             </div>
-
 
             <div class="">
                 <g:if test="${flash.message}">
@@ -110,12 +85,8 @@
                     </button>
                 </g:form>
             </div>
-
-
         </div>
-
     </div>
-
 </div>
 </body>
 </html>
