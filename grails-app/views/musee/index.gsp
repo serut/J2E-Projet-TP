@@ -11,27 +11,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <g:set var="entityName" value="${message(code: 'musee.label', default: 'Musee')}" />
     <title><g:message code="default.list.label" args="[entityName]" /></title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-
-    <asset:stylesheet src="application.css"/>
-    <!-- Custom styles for this template -->
-    <link href="/J2E-Projet-TP/css/cover.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <meta name="layout" content="main"/>
 </head>
 
 <body>
@@ -130,8 +112,10 @@
                     </div>
                 </div>
                 <div class="col-sm-2 col-sm-offset-1">
-                    <div>
-                        <h3 class="masthead-brand">Votre liste de musée favorite</h3>
+                    <div class="row">
+                        <h3 class="masthead-brand">Musées favoris</h3>
+                    </div>
+                    <div class="row">
                         <ul class="nav nav-pills nav-stacked">
                             <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
                                 <li role="presentation">
@@ -149,19 +133,20 @@
                                     </g:form>
                                 </li>
                             </g:each>
-                            <g:if test="${museesFavSorted.size() > 0}">
-                                <br>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <g:if test="${museesFavSorted.size() > 0}">
+                            <br>
                             <a href="${createLink(uri: '/demandeVisite/create')}">
                                 <button type="submit" class="btn btn-warning">Effectuer une demande de visite</button>
                             </a>
-                            </g:if>
-                        </ul>
+                        </g:if>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>
