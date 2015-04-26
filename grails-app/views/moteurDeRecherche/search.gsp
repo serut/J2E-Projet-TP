@@ -90,6 +90,9 @@
                             <button type="submit" class="btn btn-warning">Effectuer une demande de visite</button>
                         </a>
                     </g:if>
+                    <g:else>
+                        <i>Aucun musée favori</i>
+                    </g:else>
                 </div>
             </div>
         </div>
