@@ -13,6 +13,7 @@ class GestionnaireIntegrationSpec extends IntegrationSpec {
 
         expect: "le gestionnaire est valide"
         gestionnaire.validate() == true
+        gestionnaire.toString().size() > 0
 
         where:
         unNom = "Un nom "

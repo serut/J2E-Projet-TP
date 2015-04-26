@@ -16,6 +16,7 @@ class AdresseIntegrationSpec extends IntegrationSpec {
 
         expect: "l'adresse est valide"
         adresse.validate() == true
+        adresse.toString().size() > 0
 
         where:
         unNumero | uneRue | unCodePostal |uneVille

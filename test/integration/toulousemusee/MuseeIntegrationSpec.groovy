@@ -23,6 +23,7 @@ class MuseeIntegrationSpec extends IntegrationSpec {
 
         expect: "le musée est valide"
         musee.validate() == true
+        musee.toString().size() > 0
 
         where:
         unNom     | unHorairesOuverture | unTel            | unAccesMetro             | unAccesBus              | uneAdresse    | unGestionnaire
