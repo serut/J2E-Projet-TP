@@ -23,7 +23,7 @@
 
 <div class="form-group col-sm-4 ${hasErrors(bean: demandeVisiteInstance, field: 'nbPersonne', 'error')} required">
     <label>Nombre de personnes</label>
-    <g:field name="nbPersonnes" type="number" class="form-control" min="0" max="6"
-             value="${demandeVisiteInstance?.nbPersonnes ?: 0}" required=""/>
+    <g:field name="nbPersonnes" type="number" class="form-control" min="1" max="6"
+             value="${demandeVisiteInstance?.nbPersonnes ?: 1}" required=""/>
     <label>Max 6</label>
 </div>

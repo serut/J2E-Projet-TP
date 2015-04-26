@@ -17,7 +17,7 @@
                     <h3 class="masthead-brand">Projet TP J2E</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li><a href="${createLink(uri: '/')}">Acceuil</a></li>
+                            <li><a href="${createLink(uri: '/')}">Accueil</a></li>
                             <li><a href="${createLink(uri: '/demandeVisite/')}">Vos demandes de visite</a></li>
                         </ul>
                     </nav>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="content">
-                <table>
+                <table class="table table-condensed">
                     <thead>
                     <tr>
 
@@ -76,13 +76,14 @@
             </div>
             <div style="margin-top:50px">
                 <p>Et vous pouvez aussi récuperer les informations d'une autre demande de visite si vous avez le code</p>
-                <g:form name="formulaireGetInfoDemandeVisite" method="get" url="[controller:'demandeVisite',action:'index']">
-                    <label>Numéro de demande visite</label>
-                    <g:field name="idDemandeVisite" type="number" class="form-control" required=""/>
-
-                    <button type="submit" class="btn btn-primary" >
-                        Rechercher
-                    </button>
+                <g:form class="form-inline" name="formulaireGetInfoDemandeVisite" method="get" url="[controller:'demandeVisite',action:'index']">
+                    <label for="idDemandeVisite">Numéro de demande visite</label>
+                    <div class="input-group">
+                        <g:field name="idDemandeVisite" id="idDemandeVisite" type="number" class="form-control" required=""/>
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary" >Rechercher</button>
+                        </span>
+                    </div>
                 </g:form>
             </div>
         </div>
