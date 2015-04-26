@@ -63,25 +63,26 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <li><a href="${createLink(uri: '/')}">Acceuil</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Vos demandes de visite</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
 
             <div class="inner cover">
-                <h1 class="cover-heading">Demande de visite de musée</h1>
-                <span>Ces musées vous interessent ? Faites une demande de visite !</span>
+                <h1 class="cover-heading">Formulaire de demande de visite de musée</h1>
             </div>
             <div class="">
 
                 <div style="margin:50px 0">
-                    Liste des musées actuellement en favoris :
+                    Vous avez ajouté à vos favoris la liste de musées suivante :
                     <g:each in="${session.museesFav}" status="i" var="museeFavoris">
                         <li role="presentation">
                             ${museeFavoris.value}
                         </li>
                     </g:each>
                 </div>
+                <p>Remplissez le formulaire ci dessous pour enregistrer votre demande :</p>
                 <g:hasErrors bean="${demandeVisiteInstance}">
                     <ul class="label-danger" role="alert">
                         <g:eachError bean="${demandeVisiteInstance}" var="error">

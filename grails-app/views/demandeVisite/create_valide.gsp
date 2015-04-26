@@ -43,6 +43,7 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <li><a href="${createLink(uri: '/')}">Accueil</a></li>
+                            <li><a href="${createLink(uri: '/demandeVisite/')}">Vos demandes de visite</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -50,13 +51,15 @@
 
             <div class="inner cover">
                 <h1 class="cover-heading">Demande de visite de musée</h1>
-                <span>Message indiquant que la demande sera traitée prochainement</span>
             </div>
             <div class="">
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
             </div>
+            <a href="${createLink(uri: '/demandeVisite')}">
+                <button type="submit" class="btn btn-warning">Voir vos demandes de visite</button>
+            </a>
 
 
         </div>

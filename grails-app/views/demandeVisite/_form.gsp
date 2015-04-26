@@ -1,7 +1,6 @@
 <%@ page import="toulousemusee.DemandeVisite" %>
 
 
-
 <div class="form-group col-sm-4 ${hasErrors(bean: demandeVisiteInstance, field: 'dateDeb', 'error')} required">
     <label>Date début</label>
     <g:datePicker name="dateDeb" precision="day" class="form-control"
