@@ -3,21 +3,27 @@
 
 <div class="form-group col-sm-4 ${hasErrors(bean: demandeVisiteInstance, field: 'dateDeb', 'error')} required">
     <label>Date début</label>
-    <g:datePicker name="dateDeb" precision="day" class="form-control"
-                  value="${demandeVisiteInstance?.dateDeb}"/>
-
+    <div class='input-group date' id='datetimepicker1'>
+    <g:field name="dateDeb" class="form-control" value="${formatDate(format:'MM/dd/yyyy',demandeVisiteInstance?.dateDeb)}" type="text"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
 </div>
 
 <div class="form-group col-sm-4 ${hasErrors(bean: demandeVisiteInstance, field: 'dateFin', 'error')} required">
     <label>Date fin</label>
-    <g:datePicker name="dateFin" precision="day" class="form-control"
-                  value="${demandeVisiteInstance?.dateFin}"/>
-
+    <div class='input-group date' id='datetimepicker2'>
+        <g:field name="dateFin" class="form-control" value="${formatDate(format:'MM/dd/yyyy', demandeVisiteInstance?.dateFin)}" type="text"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
 </div>
 
 <div class="form-group col-sm-4 ${hasErrors(bean: demandeVisiteInstance, field: 'nbPersonne', 'error')} required">
     <label>Nombre de personnes</label>
-    <g:field name="nbPersonnes" type="number" class="form-control"
-             value="${demandeVisiteInstance?.nbPersonnes}" required=""/>
+    <g:field name="nbPersonnes" type="number" class="form-control" min="0" max="6"
+             value="${demandeVisiteInstance?.nbPersonnes ?: 0}" required=""/>
     <label>Max 6</label>
 </div>

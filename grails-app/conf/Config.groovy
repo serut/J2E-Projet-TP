@@ -88,6 +88,8 @@ grails.hibernate.osiv.readonly = false
 // Pour parer un comportement très pénible de Grails …
 grails.databinding.convertEmptyStringsToNull = false
 
+// Pour gérer le parsing des dates
+grails.databinding.dateFormats = ['MM/dd/yyyy']
 
 // Pour gérer la pagination de Bootstrap
 grails.plugins.twitterbootstrap.fixtaglib = true
