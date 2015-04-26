@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <g:set var="entityName" value="${message(code: 'musee.label', default: 'Musee')}" />
     <title><g:message code="default.list.label" args="[entityName]" /></title>
     <meta charset="utf-8">
@@ -20,9 +21,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <!-- Bootstrap core CSS -->
-    <link href="/J2E-Projet-TP/css/bootstrap.css" rel="stylesheet">
 
+
+    <asset:stylesheet src="application.css"/>
     <!-- Custom styles for this template -->
     <link href="/J2E-Projet-TP/css/cover.css" rel="stylesheet">
 
@@ -61,7 +62,7 @@
                     <g:if test="${flash.message}">
                         <div class="message" role="status">${flash.message}</div>
                     </g:if>
-                    <table class="">
+                    <table class="table table-condensed">
                         <thead>
                         <tr>
 
@@ -79,7 +80,7 @@
 
                             <th><g:message code="musee.adresse.label" default="Adresse" /></th>
 
-                            <th>Ajouter liste musee preferee</th>
+                            <th>Ajouter aux favoris</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,7 +104,7 @@
                                 <td>
                                     <g:if test="${session.museesFav?.containsKey((int)museeInstance.id)}">
                                         <button type="submit" class="btn btn-primary" disabled>
-                                            <span class="glyphicon-plus"></span> ajouter à ma liste de musées fav
+                                            <span class="glyphicon-plus"></span> Ajouter
                                         </button>
                                     </g:if>
                                     <g:else>
@@ -115,7 +116,7 @@
                                             <input type="hidden" name="max" value="${params.max}">
                                             <input type="hidden" name="idMuseeFav" value="${museeInstance.id}">
                                             <button type="submit" class="btn btn-primary" >
-                                                <span class="glyphicon-plus"></span> ajouter à ma liste de musées fav
+                                                <span class="glyphicon-plus"></span> Ajouter
                                             </button>
                                         </g:form>
                                     </g:else>
@@ -128,35 +129,43 @@
                         <g:paginate params="${params}" total="${museeInstanceCount ?: 0}" />
                     </div>
                 </div>
-                <aside class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-2 col-sm-offset-1">
                     <div>
-                        <h3 class="masthead-brand">Votre liste de musée favorite</h3>
-                        <ul class="nav nav-pills nav-stacked">
-                            <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
-                                <li role="presentation">
-                                    ${museeFavoris.value}
-                                    <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
-                                        <input type="hidden" name="codePostal" value="${params.codePostal}">
-                                        <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
-                                        <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
-                                        <input type="hidden" name="offset" value="${params.offset}">
-                                        <input type="hidden" name="max" value="${params.max}">
-                                        <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
-                                        <button type="submit" class="btn btn-primary" >
-                                            <span class="glyphicon glyphicon-trash"></span> Supprimer
-                                        </button>
-                                    </g:form>
-                                </li>
-                            </g:each>
-                            <g:if test="${museesFavSorted.size() > 0}">
-                                <br>
-                            <a href="${createLink(uri: '/demandeVisite/')}">
-                                <button type="submit" class="btn btn-warning">Faire une demande de visite</button>
-                            </a>
-                            </g:if>
-                        </ul>
+                        <div class="row">
+                            <h3 class="masthead-brand">Musées favoris</h3>
+                        </div>
+                        <div class="row">
+                            <ul class="nav nav-pills nav-stacked">
+                                <g:each in="${museesFavSorted}" status="i" var="museeFavoris">
+                                    <li role="presentation">
+                                        ${museeFavoris.value}
+                                        <g:form name="formulaireRechercher" method="get" url="[controller:'musee',action:'removeMuseeFav']">
+                                            <input type="hidden" name="codePostal" value="${params.codePostal}">
+                                            <input type="hidden" name="inNomMusee" value="${params.inNomMusee}">
+                                            <input type="hidden" name="inAdresseMusee" value="${params.inAdresseMusee}">
+                                            <input type="hidden" name="offset" value="${params.offset}">
+                                            <input type="hidden" name="max" value="${params.max}">
+                                            <input type="hidden" name="idMuseeFav" value="${museeFavoris.key}">
+                                            <button type="submit" class="btn btn-primary" >
+                                                <span class="glyphicon glyphicon-trash"></span> Supprimer
+                                            </button>
+                                        </g:form>
+                                    </li>
+                                </g:each>
+
+
+                            </ul>
+                        </div>
+                        <g:if test="${museesFavSorted.size() > 0}">
+                            <div class="row">
+                                <br/>
+                                <a href="${createLink(uri: '/demandeVisite/')}">
+                                    <button type="submit" class="btn btn-warning">Faire une demande de visite</button>
+                                </a>
+                            </div>
+                        </g:if>
                     </div>
-                </aside>
+                </div>
             </div>
         </div>
     </div>
@@ -167,6 +176,5 @@
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/J2E-Projet-TP/js/bootstrap.min.js"></script>
 </body>
 </html>
