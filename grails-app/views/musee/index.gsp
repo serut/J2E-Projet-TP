@@ -151,7 +151,7 @@
                             <g:if test="${museesFavSorted.size() > 0}">
                                 <br>
                             <a href="${createLink(uri: '/demandeVisite/create')}">
-                                <button type="submit" class="btn btn-warning">Faire une demande de visite</button>
+                                <button type="submit" class="btn btn-warning">Effectuer une demande de visite</button>
                             </a>
                             </g:if>
                         </ul>

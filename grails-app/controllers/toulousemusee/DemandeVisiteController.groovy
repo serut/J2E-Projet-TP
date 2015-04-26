@@ -10,19 +10,20 @@ class DemandeVisiteController {
         // Ajoute à la session de l'utilisateur une demande visite s'il connait son identifiant
         if (params.idDemandeVisite) {
             Integer idDemandeVisite = Integer.parseInt(params.idDemandeVisite)
-            // Verifie si il a déjà l'idenfiant dans sa liste
-            if (session.demandeVisite.contains(idDemandeVisite)) {
-                flash.message = 'Vous avez déjà ajouté cette demande de visite.'
-            } else {
-                // Vérifie que la demandeVisite existe
-                def demandeVisite = DemandeVisite.get(idDemandeVisite)
-                if (demandeVisite) {
+            // Vérifie que la demandeVisite existe
+            def demandeVisite = DemandeVisite.get(idDemandeVisite)
+            if (demandeVisite) {
+                // Verifie si il a déjà l'idenfiant dans sa liste
+                if (session.demandeVisite.contains(demandeVisite.id)) {
+                    flash.message = 'Vous avez déjà ajouté cette demande de visite.'
+                } else {
                     flash.message = "La demande de visite n°${idDemandeVisite} a bien été ajouté à votre liste de demande de visite."
                     session.demandeVisite.add(demandeVisite.id);
-                } else {
-                    flash.message = "La demande de visite n°${idDemandeVisite} n'existe pas"
                 }
+            } else {
+                flash.message = "La demande de visite n°${idDemandeVisite} n'existe pas"
             }
+
         }
 
         def demandeVisiteList = demandeVisiteService.search(session.demandeVisite);
