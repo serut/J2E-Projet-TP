@@ -1,13 +1,18 @@
 package toulousemusee
 
+import java.sql.Timestamp
+
 class DemandeVisiteMusee {
 
+    Timestamp version
     Date dateDemande
+    DemandeVisite demandeVisite
+    Musee musee
 
-    static belongsTo = [
-            musee: Musee,
-            demandeVisite: DemandeVisite
-    ]
+    static mapping = {
+        musee lazy: false
+        demandeVisite lazy: false
+    }
 
     static constraints = {
         demandeVisite nullable: false

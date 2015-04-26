@@ -1,6 +1,10 @@
 package toulousemusee
 
+import java.sql.Timestamp
+
 class DemandeVisite {
+
+    Timestamp version
     Date dateDeb
     Date dateFin
     int nbPersonnes
@@ -10,7 +14,7 @@ class DemandeVisite {
         dateDeb nullable: false
         dateFin nullable: false
         statut nullable: false, blank: false
-        nbPersonnes max: 6
+        nbPersonnes range: 1..6
     }
 
     static mapping = {

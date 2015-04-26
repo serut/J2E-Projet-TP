@@ -1,6 +1,10 @@
 package toulousemusee
 
+import java.sql.Timestamp
+
 class Musee {
+    Timestamp version
+
     String nom
     String horairesOuverture
     String telephone
@@ -17,6 +21,11 @@ class Musee {
         accesBus nullable: false, blank: true
         adresse nullable: false, unique:true
         gestionnaire nullable: false
+    }
+
+    static mapping = {
+        adresse lazy: false
+        gestionnaire lazy: false
     }
 
 
