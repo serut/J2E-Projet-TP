@@ -49,7 +49,7 @@
                     <h3 class="masthead-brand">Projet TP J2E</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li><a href="${createLink(uri: '/')}">Acceuil</a></li>
+                            <li><a href="${createLink(uri: '/')}">Accueil</a></li>
                             <li><a href="${createLink(uri: '/demandeVisite/')}">Demande de visite</a></li>
                         </ul>
                     </nav>
